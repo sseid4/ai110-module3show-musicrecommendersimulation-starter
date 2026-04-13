@@ -17,17 +17,27 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommendation systems usually score many items against a user's preferences, then rank the best matches and may add extra rules for variety or freshness. In my simulation, I will prioritize songs that match the user's genre and mood, are close to the user's target energy, and feel more aligned with their listening style instead of simply rewarding higher or lower values.
 
-Some prompts to answer:
+`Song` will use these features:
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+- `id`
+- `title`
+- `artist`
+- `genre`
+- `mood`
+- `energy`
+- `tempo_bpm`
+- `valence`
+- `danceability`
+- `acousticness`
 
-You can include a simple diagram or bullet list if helpful.
+`UserProfile` will use these features:
+
+- `favorite_genre`
+- `favorite_mood`
+- `target_energy`
+- `likes_acoustic`
 
 ---
 
@@ -106,7 +116,7 @@ Write 1 to 2 paragraphs here about what you learned:
 
 ## 7. `model_card_template.md`
 
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
+Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}
 
 ```markdown
 # 🎧 Model Card - Music Recommender Simulation
@@ -208,4 +218,3 @@ A few sentences about what you learned:
 - What surprised you about how your system behaved
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
-

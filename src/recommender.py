@@ -81,20 +81,25 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     score = 0.0
     reasons: List[str] = []
 
+    # Sensitivity experiment: halve genre impact and double energy impact.
+    genre_weight = 1.0
+    mood_weight = 1.0
+    energy_weight = 4.0
+
     favorite_genre = user_prefs.get("favorite_genre", user_prefs.get("genre", ""))
     favorite_mood = user_prefs.get("favorite_mood", user_prefs.get("mood", ""))
     target_energy = float(user_prefs.get("target_energy", user_prefs.get("energy", 0.5)))
 
     if song.get("genre") == favorite_genre:
-        score += 2.0
-        reasons.append("genre match (+2.0)")
+        score += genre_weight
+        reasons.append(f"genre match (+{genre_weight:.1f})")
 
     if song.get("mood") == favorite_mood:
-        score += 1.0
-        reasons.append("mood match (+1.0)")
+        score += mood_weight
+        reasons.append(f"mood match (+{mood_weight:.1f})")
 
     energy_diff = abs(float(song.get("energy", 0.0)) - target_energy)
-    energy_points = max(0.0, 2.0 * (1.0 - energy_diff))
+    energy_points = max(0.0, energy_weight * (1.0 - energy_diff))
     score += energy_points
     reasons.append(f"energy closeness (+{energy_points:.2f})")
 

@@ -63,6 +63,8 @@ Prompts:
 
 Where the system struggles or behaves unfairly. 
 
+One weakness is that the current scoring can create an energy-based filter bubble, especially after increasing the energy weight in the sensitivity experiment. Songs with similar energy values repeatedly dominate the top results, even when the mood signal conflicts with user intent (for example, high-energy plus sad profiles still surface mostly hype tracks). This can under-serve users with mixed or nuanced tastes because the linear energy-gap formula is strong and always active for every song. The system also ignores `likes_acoustic`, so users who care about acoustic texture are not represented in ranking decisions.
+
 Prompts:  
 
 - Features it does not consider  
@@ -75,6 +77,8 @@ Prompts:
 ## 7. Evaluation  
 
 How you checked whether the recommender behaved as expected. 
+
+I tested five profiles: High-Energy Pop, Chill Lofi, Deep Intense Rock, Adversarial Conflict (High Energy + Sad), and Edge Case (Unknown Genre + Very Low Energy). For each profile, I ran the system and reviewed the top 5 songs to see whether the results matched the requested vibe. I also ran a sensitivity experiment by changing the weights so energy mattered more and genre mattered less, then compared how the top 5 changed. The biggest surprise was how often "Gym Hero" stayed near the top for multiple high-energy users, even when their mood request was different. In plain terms, this happens because the model rewards energy similarity very strongly, so a very energetic pop song can keep winning even when someone asks for a different feeling.
 
 Prompts:  
 

@@ -83,11 +83,29 @@ pytest
 
 You can add more tests in `tests/test_recommender.py`.
 
-### Terminal Output Screenshot
+### Step 1: Profile Recommendation Screenshots
 
-Below is the terminal output showing the top recommendations from `python -m src.main`:
+Below are terminal screenshots showing the top 5 recommendations for each tested profile from `python -m src.main`.
 
-![Terminal output with recommendations](Screenshot_loaded_song.png)
+High-Energy Pop:
+
+![High-Energy Pop recommendations](Screenshot 1.png)
+
+Chill Lofi:
+
+![Chill Lofi recommendations](Screenshot 2.png)
+
+Deep Intense Rock:
+
+![Deep Intense Rock recommendations](Screenshot 3.png)
+
+Adversarial Conflict (High Energy + Sad):
+
+![Adversarial profile recommendations](Screenshot 4.png)
+
+Edge Case (Unknown Genre + Very Low Energy):
+
+![Edge-case profile recommendations](Screenshot 5.png)
 
 ---
 
